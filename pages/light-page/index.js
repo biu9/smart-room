@@ -7,11 +7,14 @@ Page({
     onLoad:function() {
         console.log("start link...");
         link.linkFunc();
+        link.checkLight();
     },
     onClickOpen() {
         console.log("点击开灯...");
+        link.turnOffLight();
     },
     onClickClose() {
         console.log("点击关灯...");
+        link.turnOnLight();
     }
 })

@@ -57,6 +57,20 @@ function checkWater() {
   console.log("checking water remain...");
 }
 
+function turnOffLight() {
+  console.log("turn off the light...")
+}
+
+function turnOnLight() {
+  console.log("turn on the light...");
+}
+
+function checkLight() {
+  console.log("checking the light...");
+}
+
 module.exports.linkFunc = linkFunc
 module.exports.checkWater = checkWater
-
+module.exports.turnOffLight = turnOffLight
+module.exports.turnOnLight = turnOnLight
+module.exports.checkLight = checkLight
