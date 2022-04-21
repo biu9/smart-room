@@ -11,7 +11,10 @@ Page({
         link.linkFunc();
       },
       checkWater() {
-        link.checkWater();
+        var waterReamin = link.checkWater();
+        this.setData({
+          "water_remain": waterReamin,
+        })
       }
 })
 

@@ -7,7 +7,10 @@ Page({
     onLoad:function() {
         console.log("start link...");
         link.linkFunc();
-        link.checkLight();
+        var returnLight= link.checkLight();
+        this.setData({
+            "light":returnLight,
+        })
     },
     onClickOpen() {
         console.log("点击开灯...");

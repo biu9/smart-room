@@ -54,7 +54,9 @@ function linkFunc() {
 }
 
 function checkWater() {
+  var waterReamin = "90%";
   console.log("checking water remain...");
+  return waterReamin;
 }
 
 function turnOffLight() {
@@ -66,7 +68,9 @@ function turnOnLight() {
 }
 
 function checkLight() {
+  var light = 90;
   console.log("checking the light...");
+  return light;
 }
 
 module.exports.linkFunc = linkFunc
