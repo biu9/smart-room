@@ -1,0 +1,16 @@
+
+<view class="light-container">
+    <view class="current-light">
+        当前亮度是{{light}}
+    </view>
+    <image class="light-img" src="/pages/index/imgs/light.jpg">
+    </image>
+    <view class="btn-container">
+        <button type="primary" bindtap="onClickOpen" class="open-light">
+            一键开灯
+        </button>
+        <button type="warn" bindtap="onClickClose">
+            一键关灯
+        </button>
+    </view>
+</view>

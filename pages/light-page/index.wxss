@@ -1,0 +1,29 @@
+/* pages/light-page/index.wxss */
+.light-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+    align-content: center;
+}
+
+.current-light {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 150rpx;
+}
+
+.btn-container {
+    margin-bottom: 200rpx;
+}
+
+.light-img {
+    position: relative;
+    left: 30rpx;
+}
+
+.open-light {
+    margin-bottom: 20rpx;
+}

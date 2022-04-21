@@ -1,0 +1,32 @@
+
+<view class="body-container">
+  <view class="word-top">
+    Water Remain
+    {{water_remain}}
+  </view>
+  <view class="bg-container">
+    <!--<view class="water">water-remain-animation</view>-->
+    <view class="bg">
+      <image src="../index/imgs/bg.png"/>
+    </view>
+  </view>
+  <view class="water-btn-bg">
+    <view class="water-btn" bindtap="checkWater">{{tips}}</view>
+  </view>
+  <!--
+  <view class="nav">
+    <view class="page-water">
+      <navigator url="../light-page/index?title=redirct" open-type="redirect" >
+        <image src="../index/imgs/icon.png">
+      </image>
+      </navigator>
+    </view>
+    <view class="page-light">
+      <image src="../index/imgs/icon2.png"></image>
+    </view>
+    <view class="page-home">
+      <image src="../index/imgs/icon3.png"></image>
+    </view>
+  </view>
+  -->
+</view>

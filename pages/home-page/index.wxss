@@ -1,0 +1,14 @@
+/* pages/home-page/index.wxss */
+.userinfo-avatar {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(0, 0, 0);
+}
