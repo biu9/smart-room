@@ -13,8 +13,8 @@ Page({
       checkWater() {
         var waterReamin = link.checkWater();
         this.setData({
-          "water_remain": waterReamin,
-        })
+          "water_remain":waterReamin
+        });
       }
 })
 

@@ -6,18 +6,15 @@ Page({
     },
     onLoad:function() {
         console.log("start link...");
-        link.linkFunc();
-        var returnLight= link.checkLight();
-        this.setData({
-            "light":returnLight,
-        })
+        //link.linkFunc();
+        link.checkLight();
     },
     onClickOpen() {
         console.log("点击开灯...");
-        link.turnOffLight();
+        link.turnOnLight();
     },
     onClickClose() {
         console.log("点击关灯...");
-        link.turnOnLight();
+        link.turnOffLight();
     }
 })
