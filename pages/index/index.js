@@ -3,12 +3,12 @@ const link = require('../../utils/link/link.js');
 
 Page({
     data: {
-        "water_remain":"100%",
+        "water_remain":0,
         "tips":"目前不需要订水",
       },
     
       onLoad: function () {
-        link.linkFunc();
+       // link.linkFunc();
       },
       checkWater() {
         var waterReamin = link.checkWater();

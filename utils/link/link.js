@@ -2,6 +2,9 @@ import mqtt from '../mqtt.js';
 const aliyunOpt = require('../aliyun/aliyun_connect.js');
 let that = null;
 let subCount = 0;
+let waterRes = 0;
+let lightRes = 0;
+let isLogged = 0;
 /*
 关于运行逻辑的一些问题
 1.订阅函数加在哪里？
@@ -30,7 +33,7 @@ let data = {
     deviceSecret: '8839f0625aa69f6b091870d287d8ee7f', //阿里云连接的三元组 ，请自己替代为自己的产品信息!!
     regionId: 'cn-shanghai', //阿里云连接的三元组 ，请自己替代为自己的产品信息!!
     pubTopic: '/gw77ejrjVII/wx-demo-device/user/wxControl', //发布消息的主题
-    subTopic: '//gw77ejrjVII/${deviceName}/user/get', //订阅消息的主题
+    subTopic: '/sys/gw77ejrjVII/wx-demo-device/thing/service/property/set', //订阅消息的主题
   },
   options: {
     protocolVersion: 4, //MQTT连接协议版本
@@ -80,13 +83,30 @@ function linkFunc() {
 TODO
 */
 function checkWater() {
-  var waterRemain = "90%";
   console.log("checking water remain...");
-  if(subCount == 0){
-      this.subTopic();
-      subCount++;
+  if(!isLogged){
+    wx.showToast({
+      title: '请先登录',
+      icon: 'none',
+      duration: 2000
+    })
   }
-  return waterRemain;
+  /*
+  if (subCount == 0) {
+    this.subTopic();
+    subCount++;
+  }
+  */
+  //接收消息
+  /*
+  data.client.on("message",function(topic,payload){
+    console.log(" 收到 topic:" + topic + " , payload :" + payload);
+    waterRes = JSON.parse(payload).params.temp;
+    lightRes = JSON.parse(payload).params.temp;
+    console.log("~~~~~~~~~~",waterRes);
+  })
+  */
+  return waterRes;
 }
 
 function turnOffLight() {
@@ -94,8 +114,8 @@ function turnOffLight() {
   var sendData = {
     id: '12233443',
     version: '1.0',
-    params:{
-      colorGreen:  0,
+    params: {
+      colorGreen: 0,
       colorRed: 0,
       colorBlue: 0
     }
@@ -120,8 +140,8 @@ function turnOnLight() {
   var sendData = {
     id: '12233443',
     version: '1.0',
-    params:{
-      colorGreen:  255,
+    params: {
+      colorGreen: 255,
       colorRed: 255,
       colorBlue: 255
     }
@@ -145,12 +165,20 @@ TODO
 */
 function checkLight() {
   console.log("checking the light...");
+  if(!isLogged){
+    wx.showToast({
+      title: '请先登录',
+      icon: 'none',
+      duration: 2000
+    })
+  }
+  return lightRes;
 }
 
 function subTopic() {
   //此函数是订阅的函数，因为放在访问服务器的函数后面没法成功订阅topic，因此把他放在这个确保订阅topic的时候已成功连接服务器
   //订阅消息函数，订阅一次即可 如果云端没有订阅的话，需要取消注释，等待成功连接服务器之后，在随便点击（开灯）或（关灯）就可以订阅函数
-  
+
   data.client.subscribe(data.aliyunInfo.subTopic, function (err) {
     if (!err) {
       console.log("订阅成功");
@@ -161,8 +189,21 @@ function subTopic() {
       showCancel: false,
     })
   })
-  
- //console.log("sub topic...");
+  //console.log("sub topic...");
+}
+
+function loginFunc() {
+  if (subCount == 0) {
+    this.subTopic();
+    subCount++;
+  }
+  data.client.on("message",function(topic,payload){
+    console.log(" 收到 topic:" + topic + " , payload :" + payload);
+    waterRes = JSON.parse(payload).items.Weight.value;
+    lightRes = JSON.parse(payload).items.lightSensorValue.value;
+    console.log("~~~~~~~~~~",waterRes);
+  })
+  isLogged = 1;
 }
 
 module.exports.linkFunc = linkFunc
@@ -171,3 +212,4 @@ module.exports.turnOffLight = turnOffLight
 module.exports.turnOnLight = turnOnLight
 module.exports.checkLight = checkLight
 module.exports.subTopic = subTopic
+module.exports.loginFunc = loginFunc

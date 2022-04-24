@@ -27,3 +27,7 @@
 .open-light {
     margin-bottom: 20rpx;
 }
+
+.off-light {
+    margin-bottom: 20rpx;
+}

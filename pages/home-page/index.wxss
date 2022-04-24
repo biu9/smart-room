@@ -12,3 +12,11 @@
     align-items: center;
     color: rgb(0, 0, 0);
 }
+
+.login-btn {
+    margin-top: 80rpx;
+}
+
+.input-info-btn{
+    margin-top: 20rpx;
+}

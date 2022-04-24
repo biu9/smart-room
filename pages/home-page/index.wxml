@@ -6,4 +6,8 @@
         </view>
         <open-data type="userNickName"></open-data>
     </view>
+    <button bindtap="login" type="primary" class="login-btn">点击登录</button>
+    <button type="default" class="input-info-btn" bindtap="setVal">
+    定义连接参数
+    </button>
 </view>

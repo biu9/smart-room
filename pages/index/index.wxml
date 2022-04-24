@@ -2,7 +2,7 @@
 <view class="body-container">
   <view class="word-top">
     Water Remain
-    {{water_remain}}
+    {{water_remain}}kg
   </view>
   <view class="bg-container">
     <!--<view class="water">water-remain-animation</view>-->
@@ -11,7 +11,7 @@
     </view>
   </view>
   <view class="water-btn-bg">
-    <view class="water-btn" bindtap="checkWater">{{tips}}</view>
+    <view class="water-btn" bindtap="checkWater">点击以查询</view>
   </view>
   <!--
   <view class="nav">
